@@ -2,18 +2,33 @@
 
 ## Overview
 
-Welcome to our innovative project developed on a forked chain of Optimism, specifically designed for SuperHack 2024. Our initiative is aimed at revolutionizing the user experience by enabling gas-free transactions. We have pre-deposited gas fees on behalf of users, allowing them to enjoy seamless interactions on the blockchain without incurring transaction costs.
+Welcome to my innovative project developed on a forked chain of Optimism, specifically designed for SuperHack 2024. This initiative aims to revolutionize the user experience by enabling gas-free transactions. I have pre-deposited gas fees on behalf of users, allowing them to engage in seamless blockchain interactions without incurring transaction costs.
 
 ## Project Components
 
 ### OP Node
 
-The operational node for our project is based on a fork of the [Ethereum Optimism repository](https://github.com/ethereum-optimism/optimism/compare/develop...joohhnnn:optimism:superhack2024?expand=1). You can view and participate in the development by visiting our comparison and contributions here:
+The OP Node includes several key implementations:
 
-[OP Node Fork on GitHub](https://github.com/ethereum-optimism/optimism/compare/develop...joohhnnn:optimism:superhack2024?expand=1)
+1. **FeeGate Contract (feegate.sol)**: I designed a demo contract called `FeeGate` that serves as a repository for project funding. This contract allows only system users to withdraw funds in a unified manner, ensuring streamlined management of resources.
+   
+2. **Transaction Settlement**: The node aggregates all free gas transactions from the previous block, calculates their total gas expenditure, and performs settlements accordingly. This mechanism ensures that the system balances the gas usage effectively and maintains the integrity of transaction processing.
 
 ### OP-Geth
 
-Our custom Geth, tailored for Optimism, supports the backend of our zero-gas transaction model. This customization is integral to our approach to providing a sustainable and cost-effective solution for users. Explore the specific changes and how they integrate with the broader Optimism ecosystem via the following link:
+Our customized Geth for the Optimism fork introduces enhanced transaction handling:
 
-[OP-Geth Fork on GitHub](https://github.com/ethereum-optimism/op-geth/compare/optimism...joohhnnn:op-geth:optimism)
+1. **Pre-TxPool Validation**: Transactions are validated before they enter the txpool to ensure they meet specific criteria, enhancing the security and efficiency of the network.
+   
+2. **Balance Validation Before Exiting TxPool**: Before transactions are processed from the txpool, a balance check is performed for the dApp accounts, ensuring that transactions do not exceed the available funds.
+   
+3. **Support Functions**: Various auxiliary functions are implemented to support the core functionalities of transaction handling and system operations.
+
+## Project Status and Future Directions
+
+This demo project is in an early stage of development and has several imperfections due to the constrained timeline of the hackathon, such as:
+
+- **Contract Mode**: The current contract mode could be replaced in future versions with off-chain signature passing from the dApp side to reduce on-chain load and enhance security.
+  
+- **Pending Tasks**: There are several TODOs that still need to be addressed to fully realize the project's potential.
+
